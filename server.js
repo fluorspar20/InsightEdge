@@ -11,10 +11,6 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors())
 
-// routes
-// app.use('/', (req, res, err) => {
-//     res.send('Hello World')
-// })
 app.use('/users', userRouter)
 
 //connect to mongodb
