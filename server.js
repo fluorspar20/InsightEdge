@@ -27,7 +27,7 @@ mongoose.connect(URI, {
 }, err => {
     if (err)
         throw err
-    console.log('Connected to MongoDB')
+    console.log('Connected to database')
 })
 
 const PORT = process.env.PORT || 5000
