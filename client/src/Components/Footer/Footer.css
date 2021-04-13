@@ -1,0 +1,25 @@
+.footer {
+  background: #24305e;
+  color: white;
+}
+
+.top-content {
+  border-bottom: 1px solid white;
+}
+
+.footer__info p {
+  margin-top: 2rem;
+}
+
+.top-content ul {
+  list-style: none;
+}
+
+.top-content ul li {
+  color: rgb(209, 209, 209);
+}
+
+.top-content ul li:hover {
+  color: white;
+  cursor: pointer;
+}
