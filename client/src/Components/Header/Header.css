@@ -1,0 +1,17 @@
+.header {
+  background: #a8d0e6;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.header__login {
+  background: rgb(255, 196, 0);
+  border: 1px solid transparent;
+  font: inherit;
+  margin: 0.5em;
+  padding: 0.6rem 1.2rem;
+  transition: 0.2s ease-in-out;
+}
+
+.header__login:hover {
+  background: rgb(255, 218, 95);
+}
