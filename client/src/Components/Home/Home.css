@@ -1,0 +1,80 @@
+.home__main-content {
+  background: #a8d0e6;
+  min-height: calc(100vh - 81px) !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home__main-content h1 {
+  font-size: 3.5rem;
+}
+
+.home__main-content h3 {
+  font-size: 3rem;
+}
+
+.home__main-content p {
+  font-size: 1.5rem;
+}
+
+.home__second-content {
+  background: #374785;
+  min-height: 100vh !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ideas-content h1 {
+  font-size: 3rem;
+  color: white;
+}
+
+.ideas-content p {
+  margin-top: 4rem;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.home__third-content {
+  background: #f8e9a1;
+  min-height: 100vh !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.audience-content h1 {
+  font-size: 3rem;
+}
+
+.audience-content p {
+  margin-top: 4rem;
+  font-size: 1.5rem;
+}
+
+.home__fourth-content {
+  background: #f76c6c;
+  min-height: 100vh !important;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.connection-content h1 {
+  font-size: 3rem;
+}
+
+.connection-content p {
+  margin-top: 4rem;
+  font-size: 1.5rem;
+}
