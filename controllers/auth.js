@@ -28,7 +28,7 @@ const userCtrl = {
       });
       await newUser.save();
       return res.status(200).json({
-        message: "SignUp Successful!",
+        message: "Sign Up Successful!",
         user: newUser,
       });
     } catch (err) {
@@ -38,7 +38,6 @@ const userCtrl = {
   login: async (req, res) => {
     try {
       const { email, password } = req.body;
-      console.log(email, password);
       const user = await Users.findOne({ email });
       if (!user) {
         return res.status(400).json({
