@@ -1,0 +1,22 @@
+.login {
+  min-height: auto !important;
+  width: 90% !important;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  box-shadow: 1px 1px 20px rgb(95, 95, 95);
+}
+
+.login__form,
+.login__img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login__input {
+  width: 100%;
+}
+.login__form {
+  align-items: center;
+  width: 100%;
+}

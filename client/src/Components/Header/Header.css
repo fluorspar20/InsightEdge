@@ -1,5 +1,5 @@
 .header {
-  background: #a8d0e6;
+  background: #f76c6c;
   border-bottom: 1px solid whitesmoke;
 }
 
@@ -10,8 +10,12 @@
   margin: 0.5em;
   padding: 0.6rem 1.2rem;
   transition: 0.2s ease-in-out;
+  text-decoration: none;
+  color: white;
 }
 
 .header__login:hover {
   background: rgb(255, 218, 95);
+  text-decoration: none;
+  color: white;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -10,11 +10,13 @@ import {
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
+import AuthContext from "../../context/auth-context";
 import "./Header.css";
 
 function Header() {
   const [isNavOpen, setNavOpen] = useState(false);
 
+  const myContext = useContext(AuthContext);
   const toggleNav = () => {
     setNavOpen(!isNavOpen);
   };
@@ -47,10 +49,19 @@ function Header() {
               </NavItem>
             </Nav> */}
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <button className="header__login">Login</button>
-              </NavItem>
+              {!myContext.token && (
+                <NavItem>
+                  <NavLink className="header__login" to="/login">
+                    Login
+                  </NavLink>
+                </NavItem>
+              )}
             </Nav>
+            {myContext.token && (
+              <Button color="primary" onClick={myContext.logout}>
+                Logout
+              </Button>
+            )}
           </Collapse>
         </div>
       </Navbar>
