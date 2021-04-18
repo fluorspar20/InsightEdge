@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
+import AuthContext from "../../context/auth-context";
 import "./Footer.css";
 
 function Footer() {
+  const myContext = useContext(AuthContext);
   return (
     <div className="footer">
       <div class="container">
@@ -19,8 +21,26 @@ function Footer() {
           <div className="col-12 offset-md-6 col-md-3">
             <h5>Quick Links</h5>
             <ul>
-              <li>Home</li>
-              <li>Login</li>
+              <li>
+                {" "}
+                <NavLink className="footer__links" to="/">
+                  Home
+                </NavLink>{" "}
+              </li>
+              {!myContext.token && (
+                <li>
+                  {" "}
+                  <NavLink className="footer__links" to="/login">
+                    Login
+                  </NavLink>{" "}
+                </li>
+              )}
+              {myContext.token && (
+                <li className="footer__links" onClick={myContext.logout}>
+                  {" "}
+                  Logout{" "}
+                </li>
+              )}
               <li>My Profile</li>
             </ul>
           </div>

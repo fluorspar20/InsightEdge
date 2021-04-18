@@ -23,3 +23,14 @@
   color: white;
   cursor: pointer;
 }
+
+.footer__links {
+  color: rgb(209, 209, 209);
+  text-decoration: none;
+}
+
+.footer__links:hover {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
