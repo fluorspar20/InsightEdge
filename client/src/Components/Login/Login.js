@@ -52,7 +52,7 @@ export default class Login extends Component {
                 className="login__form-inputs"
               >
                 <FormGroup>
-                  <Label for="exampleEmail">Email</Label>
+                  <Label for="email">Email</Label>
                   <Input
                     required
                     type="email"
@@ -63,7 +63,7 @@ export default class Login extends Component {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label for="examplePassword">Password</Label>
+                  <Label for="password">Password</Label>
                   <Input
                     required
                     className="login__input"
@@ -73,7 +73,9 @@ export default class Login extends Component {
                   />
                 </FormGroup>
                 <FormText style={{ margin: "10px 0" }}>
-                  <NavLink to="/signup">Register Now</NavLink>
+                  <NavLink to="/signup">
+                    Don't have an account? Register now!
+                  </NavLink>
                 </FormText>
                 <Button color="warning">Login</Button>
               </Form>
