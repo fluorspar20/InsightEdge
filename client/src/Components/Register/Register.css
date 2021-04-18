@@ -1,0 +1,22 @@
+.register {
+  min-height: auto !important;
+  width: 90% !important;
+  /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+  box-shadow: 0px 0px 5px 2px rgb(207, 207, 207);
+}
+
+.register__form,
+.register__img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.register__input {
+  width: 100%;
+}
+.register__form {
+  align-items: center;
+  width: 100%;
+}
