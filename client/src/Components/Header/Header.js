@@ -7,6 +7,8 @@ import {
   Collapse,
   NavItem,
   Button,
+  FormGroup,
+  Input,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 
@@ -48,7 +50,33 @@ function Header() {
                 </NavLink>
               </NavItem>
             </Nav> */}
-            <Nav className="ml-auto" navbar>
+            <Nav className="ml-auto align-items-center" navbar>
+              <form className="nav-link">
+                <FormGroup>
+                  <Input
+                    required
+                    type="text"
+                    name="search"
+                    id="search"
+                    placeholder="Search for blogs..."
+                    className="search"
+                  />
+                </FormGroup>
+              </form>
+              {myContext.token && (
+                <NavItem onClick={toggleNav}>
+                  <NavLink className="nav-link create" to="/create_blog">
+                    New Blog
+                  </NavLink>
+                </NavItem>
+              )}
+              {myContext.token && (
+                <NavItem onClick={toggleNav}>
+                  <NavLink className="nav-link user" to="/dashboard">
+                    <img src="/assets/user.svg" height="20" alt="Profile" />
+                  </NavLink>
+                </NavItem>
+              )}
               {!myContext.token && (
                 <NavItem>
                   <NavLink className="header__login" to="/login">
@@ -58,7 +86,11 @@ function Header() {
               )}
             </Nav>
             {myContext.token && (
-              <Button color="primary" onClick={myContext.logout}>
+              <Button
+                className="nav-link"
+                color="primary"
+                onClick={myContext.logout}
+              >
                 Logout
               </Button>
             )}

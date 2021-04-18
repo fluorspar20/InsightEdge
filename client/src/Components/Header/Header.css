@@ -19,3 +19,23 @@
   text-decoration: none;
   color: white;
 }
+
+.nav-link {
+  margin: 0 1rem;
+}
+
+.create {
+  color: white !important;
+  font-weight: 500;
+}
+
+.user {
+  border: 2px solid black;
+  border-radius: 3rem;
+  padding: 0.4rem 0.7rem 0.6rem 0.7rem !important;
+}
+
+.search {
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
