@@ -1,0 +1,11 @@
+.blog__page {
+  margin: 2rem 0;
+}
+
+.blog__info {
+  margin: 2rem 0;
+}
+
+.blog__info p {
+  color: gray;
+}
