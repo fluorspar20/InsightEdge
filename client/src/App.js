@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import Landing from "./Components/Landing/Landing";
 import Login from "./Components/Login/Login";
+import Home from "./Components/Home/Home";
+import Register from "./Components/Register/Register";
+import CreateBlog from "./Components/CreateBlog/CreateBlog";
+import BlogPage from "./Components/BlogPage/BlogPage";
 
 import AuthContext from "./context/auth-context";
 
@@ -26,6 +30,10 @@ function App() {
     localStorage.removeItem("user");
   };
 
+  useEffect(() => {
+    document.querySelector(".divLoader").style.display = "none";
+  }, []);
+
   return (
     <BrowserRouter>
       <AuthContext.Provider
@@ -42,7 +50,13 @@ function App() {
           <Header />
           <Switch>
             {!token && <Route exact path="/" component={Landing} />}
+            {token && <Route exact path="/" component={Home} />}
             <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Register} />
+            {token && (
+              <Route exact path="/create_blog" component={CreateBlog} />
+            )}
+            {token && <Route path="/blogs/:id" component={BlogPage} />}
             <Redirect to="/" />
           </Switch>
           <Footer />
