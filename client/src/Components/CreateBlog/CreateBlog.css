@@ -1,0 +1,26 @@
+.editor-window {
+  margin: 2rem 0;
+}
+
+.blog-title,
+.notes {
+  margin: 2rem 0;
+}
+
+.notes {
+  resize: none;
+  height: 20rem !important;
+}
+
+.blog-content .ql-container {
+  min-height: 30rem;
+  width: 100%;
+}
+
+.create-blog-btns {
+  margin: 2rem 0;
+}
+
+.create-blog-btn {
+  margin-right: 2rem;
+}
