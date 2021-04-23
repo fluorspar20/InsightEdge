@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import ReactQuill from "react-quill";
-import { Input, Button, Modal, ModalHeader, ModalBody } from "reactstrap";
+import {
+  Input,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  FormGroup,
+  Label,
+} from "reactstrap";
 import axios from "axios";
 
 import PreviewBlog from "./PreviewBlog";
@@ -16,9 +24,11 @@ class TextEditor extends Component {
     this.state = {
       title: "",
       content: "",
+      header_img: "",
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.headerImageOnChange = this.headerImageOnChange.bind(this);
   }
 
   static contextType = AuthContext;
@@ -58,6 +68,7 @@ class TextEditor extends Component {
         const data = {};
         data["title"] = this.state.title;
         data["content"] = this.state.content;
+        data["header_img"] = this.state.header_img;
 
         // temporary workaround for description
         let span = document.createElement("span");
@@ -76,8 +87,24 @@ class TextEditor extends Component {
         alert(res.data.message);
       })
       .catch((err) => {
-        alert(err.response.data.message);
+        alert(err);
       });
+  }
+
+  headerImageOnChange(e) {
+    console.log("file to upload", e.target.files[0]);
+    let file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        let binaryString = e.target.result;
+        this.setState({
+          header_img: btoa(binaryString),
+        });
+      };
+      reader.readAsBinaryString(file);
+    }
+    console.log(this.state.header_img);
   }
 
   render() {
@@ -101,6 +128,19 @@ class TextEditor extends Component {
                     this.setState({ title: e.target.value });
                   }}
                 />
+                <FormGroup>
+                  <Label className="header_img_label" for="header_img">
+                    Upload Header Image
+                  </Label>
+                  <Input
+                    type="file"
+                    name="header_img"
+                    className="header_img"
+                    id="header_img"
+                    accept="image/png, image/jpeg, image/jpg"
+                    onChange={(e) => this.headerImageOnChange(e)}
+                  />
+                </FormGroup>
               </div>
               <ReactQuill
                 required
