@@ -10,7 +10,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       const res = await axios.get("http://localhost:5000/blogs/get_blogs");
-      console.log(res.data.blogs);
+      // console.log(res.data.blogs);
       setBLOGS(res.data.blogs);
     }
     fetchData();
@@ -21,10 +21,14 @@ function Home() {
       <div className="row">
         {BLOGS.map((blog) => {
           return (
-            <div key={blog._id} className="col-md-6">
+            <div key={blog._id} className="col-md-4">
               <BlogItem
                 id={blog._id}
-                header_img="https://images.pexels.com/photos/556666/pexels-photo-556666.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                header_img={
+                  blog.header_img
+                    ? `data:image/png;base64,${blog.header_img}`
+                    : "https://images.medicinenet.com/images/slideshow/sunlight-and-your-health-s1-its-not-all-bad.jpg"
+                }
                 author={blog.author}
                 title={blog.title}
                 description={blog.description}
