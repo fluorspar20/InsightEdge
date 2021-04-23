@@ -9,3 +9,19 @@
 .blog__info p {
   color: gray;
 }
+
+.blog-content img {
+  width: 80% !important;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 868px) {
+  .preview-content img {
+    width: 90% !important;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
