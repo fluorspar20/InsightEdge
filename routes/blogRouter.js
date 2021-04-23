@@ -3,6 +3,6 @@ const blogCtrl = require("../controllers/blog");
 
 blogRouter.post("/new_blog", blogCtrl.newBlog);
 blogRouter.get("/get_blogs", blogCtrl.getBlogs);
-blogRouter.get("/get_blog_byId/:id", blogCtrl.getBlogById);
+blogRouter.post("/get_blog_info", blogCtrl.getBlogInfo);
 
 module.exports = blogRouter;
