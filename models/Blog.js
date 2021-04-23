@@ -23,6 +23,10 @@ const blogSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    header_img: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
