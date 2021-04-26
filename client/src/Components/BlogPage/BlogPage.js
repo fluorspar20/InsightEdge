@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import parse from "react-html-parser";
+import { NavLink } from "react-router-dom";
 
 import Loader from "../Loader/Loader";
 import "./BlogPage.css";
@@ -39,7 +40,9 @@ function BlogPage() {
               </header>
               <div className="blog__info">
                 <h5>
-                  {author.firstName} {author.lastName}
+                  <NavLink to={`/dashboard/${author._id}`}>
+                    {author.firstName} {author.lastName}
+                  </NavLink>
                 </h5>
                 <p>{new Date(blog.createdAt).toDateString()}</p>
                 <img
