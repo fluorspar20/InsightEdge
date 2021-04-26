@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 import axios from "axios";
@@ -6,6 +6,7 @@ import axios from "axios";
 import "./Register.css";
 
 function Register() {
+  const [register, setRegister] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -19,8 +20,9 @@ function Register() {
     axios
       .post(url, data)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         alert(res.data.message);
+        setRegister(true);
       })
       .catch((err) => {
         console.log(err.response.data.message);
@@ -95,6 +97,7 @@ function Register() {
           </div>
         </div>
       </div>
+      {register && <Redirect to="/login" />}
     </div>
   );
 }
