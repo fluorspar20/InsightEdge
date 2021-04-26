@@ -40,7 +40,7 @@ function Dashboard() {
       setLoading(false);
     }
     fetchUserInfo();
-  }, []);
+  }, [id]);
 
   function toggleModal() {
     setModalOpen(!isModalOpen);
