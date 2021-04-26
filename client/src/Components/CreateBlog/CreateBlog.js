@@ -49,6 +49,11 @@ class TextEditor extends Component {
     ],
   };
 
+  componentDidMount() {
+    const input = document.querySelector("input[data-link]");
+    input.dataset.link = "https://google.co.in";
+  }
+
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
