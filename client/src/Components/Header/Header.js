@@ -35,7 +35,7 @@ function Header() {
       if (res.data.user.profileImg) setProfileImg(res.data.user.profileImg);
     }
     fetchUserInfo();
-  }, []);
+  }, [profileImg]);
 
   //render() {
   return (
