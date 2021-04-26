@@ -23,6 +23,7 @@ const blogCtrl = {
       await new_blog.save();
       return res.status(200).json({
         message: "Blog Published!",
+        new_blog,
       });
     } catch (err) {
       return res.status(500).json({ message: err.message });
