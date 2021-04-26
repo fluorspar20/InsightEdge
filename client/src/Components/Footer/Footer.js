@@ -17,7 +17,7 @@ function Footer() {
       setId(res.data.user._id);
     }
     fetchUser();
-  });
+  }, []);
 
   return (
     <div className="footer">
