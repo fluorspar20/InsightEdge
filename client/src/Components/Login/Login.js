@@ -20,13 +20,13 @@ export default class Login extends Component {
     const data = {};
     data["email"] = e.target[0].value;
     data["password"] = e.target[1].value;
-    console.log(data);
-    const url = "http://localhost:5000/users/login";
+    // console.log(data);
+    const url = "/users/login";
 
     axios
       .post(url, data)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.access_token) {
           localStorage.setItem("jwtToken", res.data.access_token);
           localStorage.setItem("user", e.target[0].value);

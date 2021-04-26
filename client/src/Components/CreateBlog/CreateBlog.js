@@ -67,7 +67,7 @@ class TextEditor extends Component {
     user["email"] = email;
     console.log(user);
     axios
-      .post("http://localhost:5000/users/getUser", user)
+      .post("/users/getUser", user)
       .then((res) => {
         author = res.data.user;
         const data = {};
@@ -84,7 +84,7 @@ class TextEditor extends Component {
           Math.ceil(span.textContent.split(" ").length / 200) + 1;
         data["read_time"] = read_time;
         data["author"] = author;
-        console.log(data);
+        // console.log(data);
 
         return axios.post("http://localhost:5000/blogs/new_blog", data);
       })
@@ -92,7 +92,7 @@ class TextEditor extends Component {
         alert(res.data.message);
       })
       .catch((err) => {
-        alert(err);
+        alert(err.response.data.message);
       });
   }
 

@@ -17,11 +17,8 @@ function BlogPage() {
     async function fetchData() {
       const data = {};
       data["id"] = id;
-      const res = await axios.post(
-        "http://localhost:5000/blogs/get_blog_info",
-        data
-      );
-      console.log(res.data);
+      const res = await axios.post("/blogs/get_blog_info", data);
+      // console.log(res.data);
       setBlog(res.data.blog);
       setAuthor(res.data.author);
     }

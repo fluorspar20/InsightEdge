@@ -11,10 +11,7 @@ function BlogItem(props) {
       const data = {};
       data["id"] = props.author;
       // console.log(data);
-      const res = await axios.post(
-        `http://localhost:5000/users/getUserById`,
-        data
-      );
+      const res = await axios.post(`/users/getUserById`, data);
 
       setAuthor(res.data.author);
     }

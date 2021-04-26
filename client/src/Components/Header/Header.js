@@ -30,7 +30,7 @@ function Header() {
     async function fetchUserInfo() {
       const data = {};
       data["email"] = myContext.email;
-      const res = await axios.post("http://localhost:5000/users/getUser", data);
+      const res = await axios.post("/users/getUser", data);
       setId(res.data.user._id);
       if (res.data.user.profileImg) setProfileImg(res.data.user.profileImg);
     }

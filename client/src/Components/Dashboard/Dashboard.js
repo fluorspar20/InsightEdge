@@ -33,10 +33,7 @@ function Dashboard() {
       setLoading(true);
       const data = {};
       data["id"] = id;
-      const res = await axios.post(
-        "http://localhost:5000/users/getUserAndBlogs",
-        data
-      );
+      const res = await axios.post("/users/getUserAndBlogs", data);
       // console.log(res.data);
       setUser(res.data.user);
       setBlogs(res.data.blogs);
@@ -50,7 +47,7 @@ function Dashboard() {
   }
 
   function ProfileImageOnChange(e) {
-    console.log("file to upload", e.target.files[0]);
+    // console.log("file to upload", e.target.files[0]);
     let file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -71,10 +68,7 @@ function Dashboard() {
     console.log(data);
 
     setLoading(true);
-    const res = await axios.put(
-      "http://localhost:5000/users/updateProfile",
-      data
-    );
+    const res = await axios.put("/users/updateProfile", data);
     console.log(res.data);
     setModalOpen(!isModalOpen);
     window.location.reload(false);

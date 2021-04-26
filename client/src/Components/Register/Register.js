@@ -15,7 +15,7 @@ function Register() {
     }
     console.log(data);
 
-    const url = "http://localhost:5000/users/signup";
+    const url = "/users/signup";
     axios
       .post(url, data)
       .then((res) => {

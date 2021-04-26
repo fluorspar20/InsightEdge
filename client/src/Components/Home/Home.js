@@ -12,7 +12,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/blogs/get_blogs");
+      const res = await axios.get("/blogs/get_blogs");
       // console.log(res.data.blogs);
       setBLOGS(res.data.blogs);
       setLoading(false);
