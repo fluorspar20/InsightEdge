@@ -11,13 +11,14 @@ function Footer() {
 
   useEffect(() => {
     async function fetchUser() {
+      console.log("footer");
       const data = {};
       data["email"] = myContext.email;
       const res = await axios.post("/users/getUser", data);
       setId(res.data.user._id);
     }
     fetchUser();
-  }, []);
+  });
 
   return (
     <div className="footer">
