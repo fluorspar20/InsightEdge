@@ -16,6 +16,7 @@ import AuthContext from "../../context/auth-context";
 
 import "react-quill/dist/quill.snow.css";
 import "./CreateBlog.css";
+import { Redirect } from "react-router";
 
 class TextEditor extends Component {
   constructor(props) {
@@ -25,6 +26,8 @@ class TextEditor extends Component {
       title: "",
       content: "",
       header_img: "",
+      published: false,
+      blogId: null,
     };
     this.toggleModal = this.toggleModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -90,6 +93,10 @@ class TextEditor extends Component {
       })
       .then((res) => {
         alert(res.data.message);
+        this.setState({
+          published: true,
+          blogId: res.data.new_blog._id,
+        });
       })
       .catch((err) => {
         alert(err.response.data.message);
@@ -206,6 +213,9 @@ class TextEditor extends Component {
             </ModalBody>
           </Modal>
         </div>
+        {this.state.published && (
+          <Redirect to={`/blogs/${this.state.blogId}`} />
+        )}
       </div>
     );
   }
