@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -11,17 +11,31 @@ import {
   Input,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 import AuthContext from "../../context/auth-context";
 import "./Header.css";
 
 function Header() {
   const [isNavOpen, setNavOpen] = useState(false);
+  const [id, setId] = useState(null);
+  const [profileImg, setProfileImg] = useState(null);
 
   const myContext = useContext(AuthContext);
   const toggleNav = () => {
     setNavOpen(!isNavOpen);
   };
+
+  useEffect(() => {
+    async function fetchUserInfo() {
+      const data = {};
+      data["email"] = myContext.email;
+      const res = await axios.post("http://localhost:5000/users/getUser", data);
+      setId(res.data.user._id);
+      if (res.data.user.profileImg) setProfileImg(res.data.user.profileImg);
+    }
+    fetchUserInfo();
+  }, []);
 
   //render() {
   return (
@@ -34,35 +48,23 @@ function Header() {
               src="/assets/logo_black.png"
               height="55"
               width="auto"
-              alt="Ristorante con Fusion"
+              alt="My Profile"
             />
           </NavbarBrand>
           <Collapse isOpen={isNavOpen} navbar>
-            {/* <Nav className="ml-auto" navbar>
-              <NavItem onClick={toggleNav}>
-                <NavLink className="nav-link" to="/menu">
-                  Search    // search bar here after login
-                </NavLink>
-              </NavItem>
-              <NavItem onClick={toggleNav}>
-                <NavLink className="nav-link" to="/contactus">
-                  Profile   // profile here after login
-                </NavLink>
-              </NavItem>
-            </Nav> */}
             <Nav className="ml-auto align-items-center" navbar>
-              <form className="nav-link">
-                <FormGroup>
-                  <Input
-                    required
-                    type="text"
-                    name="search"
-                    id="search"
-                    placeholder="Search for blogs..."
-                    className="search"
-                  />
-                </FormGroup>
-              </form>
+              {/* <form className="nav-link">
+              <FormGroup>
+                <Input
+                  required
+                  type="text"
+                  name="search"
+                  id="search"
+                  placeholder="Search for blogs..."
+                  className="search"
+                />
+              </FormGroup>
+              </form> */}
               {myContext.token && (
                 <NavItem onClick={toggleNav}>
                   <NavLink className="nav-link create" to="/create_blog">
@@ -72,8 +74,17 @@ function Header() {
               )}
               {myContext.token && (
                 <NavItem onClick={toggleNav}>
-                  <NavLink className="nav-link user" to="/dashboard">
-                    <img src="/assets/user.svg" height="20" alt="Profile" />
+                  <NavLink className="nav-link user" to={`/dashboard/${id}`}>
+                    <img
+                      className="profile_img"
+                      src={
+                        profileImg
+                          ? `data:image/png;base64,${profileImg}`
+                          : "/assets/user.png"
+                      }
+                      height="40"
+                      alt="Profile"
+                    />
                   </NavLink>
                 </NavItem>
               )}
