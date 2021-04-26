@@ -1,11 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 import AuthContext from "../../context/auth-context";
 import "./Footer.css";
 
 function Footer() {
   const myContext = useContext(AuthContext);
+  const [id, setId] = useState(null);
+
+  useEffect(() => {
+    async function fetchUser() {
+      const data = {};
+      data["email"] = myContext.email;
+      const res = await axios.post("http://localhost:5000/users/getUser", data);
+      setId(res.data.user._id);
+    }
+    fetchUser();
+  });
+
   return (
     <div className="footer">
       <div class="container">
@@ -22,26 +35,29 @@ function Footer() {
             <h5>Quick Links</h5>
             <ul>
               <li>
-                {" "}
                 <NavLink className="footer__links" to="/">
                   Home
-                </NavLink>{" "}
+                </NavLink>
               </li>
               {!myContext.token && (
                 <li>
-                  {" "}
                   <NavLink className="footer__links" to="/login">
                     Login
-                  </NavLink>{" "}
+                  </NavLink>
                 </li>
               )}
               {myContext.token && (
                 <li className="footer__links" onClick={myContext.logout}>
-                  {" "}
-                  Logout{" "}
+                  Logout
                 </li>
               )}
-              <li>My Profile</li>
+              {myContext.token && (
+                <li>
+                  <NavLink className="footer__links" to={`/dashboard/${id}`}>
+                    My Profile
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
         </div>
