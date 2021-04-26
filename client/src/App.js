@@ -9,6 +9,7 @@ import Home from "./Components/Home/Home";
 import Register from "./Components/Register/Register";
 import CreateBlog from "./Components/CreateBlog/CreateBlog";
 import BlogPage from "./Components/BlogPage/BlogPage";
+import Dashboard from "./Components/Dashboard/Dashboard";
 
 import AuthContext from "./context/auth-context";
 
@@ -57,6 +58,7 @@ function App() {
               <Route exact path="/create_blog" component={CreateBlog} />
             )}
             {token && <Route path="/blogs/:id" component={BlogPage} />}
+            {token && <Route path="/dashboard/:id" component={Dashboard} />}
             <Redirect to="/" />
           </Switch>
           <Footer />
